@@ -65,7 +65,6 @@
       title: "UNIST 104동 · 제2공학관",
       room: "E205호",
       label: "104동 E205",
-      desc: "Day 1 — 일정 안내 · Keynote · Oral Presentation",
       lat: 35.57228, lng: 129.19028, // 플러스코드 H5CR+W4
       query: "UNIST 제2공학관",
       naver: "https://map.naver.com/p/search/" + encodeURIComponent("울산과학기술원제2공학관")
@@ -74,7 +73,6 @@
       title: "UNIST 112동 · 제5공학관",
       room: "I101호",
       label: "112동 I101",
-      desc: "Day 1 — 점심 식사 · 라이트닝 토크 · 포스터 발표",
       lat: 35.57156, lng: 129.18756, // 플러스코드 H5CQ+J2
       // "UNIST 제5공학관"으론 구글이 못 찾음 → 등록된 장소명+주소로 검색해야 카드가 뜸
       query: "제5공학관, 울산광역시 울주군 언양읍 반연리 334-1",
@@ -85,7 +83,6 @@
       title: "UNIST 106동 · 제3공학관",
       room: "501-10호",
       label: "106동 501-10",
-      desc: "Day 2 — 워크숍 마무리 및 차년도 계획 수립 (학생 참여 X)",
       lat: 35.57219, lng: 129.18953, // 플러스코드 H5CQ+VR
       // 이름만 검색하면 결과 2개로 핀이 밀림 → 주소를 붙여 유일한 장소로 고정
       query: "UNIST 제3공학관, 울산광역시 울주군 언양읍 반연리 154-4",
@@ -96,7 +93,6 @@
       title: "허고개 소도둑 구영점",
       room: "저녁 식사",
       label: "저녁 식사",
-      desc: "Day 1 — 18:30 저녁 식사 · 울산 울주군 범서읍 구영리 394-15",
       lat: 35.56717, lng: 129.24500,
       query: "울산 울주군 범서읍 구영리 394-15",
       naver: "https://naver.me/FXwNbhMC"
@@ -106,7 +102,6 @@
   const iframe = document.getElementById("map-iframe");
   const naverMapEl = document.getElementById("naver-map");
   const mapTitle = document.getElementById("map-title");
-  const mapDesc = document.getElementById("map-desc");
   const mapOpen = document.getElementById("map-open");
   const mapNaver = document.getElementById("map-naver");
   const tabs = document.querySelectorAll(".map-tab");
@@ -194,7 +189,6 @@
     }
 
     mapTitle.innerHTML = m.title + ' <span class="room-badge mono">' + m.room + "</span>";
-    mapDesc.textContent = m.desc;
     mapOpen.href = openUrl(m.open || m.query);
     mapNaver.hidden = !m.naver;
     if (m.naver) mapNaver.href = m.naver;
