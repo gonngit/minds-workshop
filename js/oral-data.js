@@ -9,7 +9,7 @@
    ============================================================ */
 const ORAL = [
   {
-    name: "발표자 1",
+    name: "문수호",
     affil: "중앙대학교 MINDS Lab",
     photo: "",        // "photos/oral-1.jpg"
     title: "",        // "발표 제목"
@@ -17,17 +17,17 @@ const ORAL = [
     pdf: ""           // "pdfs/oral-1.pdf"
   },
   {
-    name: "발표자 2",
+    name: "조주희",
     affil: "중앙대학교 MINDS Lab",
-    photo: "",
+    photo: "",        // "photos/oral-2.jpg"
     title: "",
     summary: "",
     pdf: ""
   },
   {
-    name: "발표자 3",
+    name: "이규원",
     affil: "중앙대학교 MINDS Lab",
-    photo: "",
+    photo: "",        // "photos/oral-3.jpg"
     title: "",
     summary: "",
     pdf: ""
