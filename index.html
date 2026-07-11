@@ -5,7 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="2026 하계 DI × HCI 워크숍 — UNIST Data Intelligence Lab · 2026.07.28–07.29">
   <title>2026 하계 DI × HCI 워크숍</title>
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    document.documentElement.classList.add("js");
+    // 발표자 사진 로드 실패 시 이니셜 원으로 대체 (인라인 onerror에서 호출 — img 파싱 전에 정의돼야 함)
+    window.avatarFallback = function (img, initial) {
+      var span = document.createElement("span");
+      span.className = img.className + " placeholder";
+      span.textContent = initial || "✦";
+      span.setAttribute("aria-hidden", "true");
+      img.replaceWith(span);
+    };
+  </script>
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +40,6 @@
       <a href="#schedule">일정</a>
       <a href="#venue">오시는 길</a>
       <a href="#gallery">갤러리</a>
-      <a href="#info">발표 안내</a>
     </nav>
   </header>
 
@@ -77,8 +86,8 @@
         <div class="school-card reveal">
           <div class="school-badge host-badge mono">HOST</div>
           <div class="school-logo"><img src="img/unist.png" alt="UNIST 로고" loading="lazy"></div>
-          <h3 class="school-name">UNIST</h3>
-          <p class="school-full">울산과학기술원 · Data Intelligence Lab</p>
+          <h3 class="school-name">울산과학기술원</h3>
+          <p class="school-full">UNIST</p>
           <ul class="prof-list"><li>이연창 교수님</li></ul>
         </div>
         <div class="school-card reveal">
@@ -107,12 +116,18 @@
       <p class="section-eyebrow mono reveal">TIMELINE</p>
       <h2 class="section-title reveal">워크숍 일정</h2>
 
+      <!-- 세션 형식 안내 (기존 발표 안내 요약) -->
+      <div class="sched-legend reveal">
+        <span class="leg-item"><b class="mono">KEYNOTE</b> 발표 35분 + 질의응답 5분 · 104동 E205</span>
+        <span class="leg-item"><b class="mono">ORAL</b> 발표 15분 + 질의응답 5분 · 104동 E205</span>
+        <span class="leg-item"><b class="mono">LIGHTNING · POSTER</b> 점심시간 진행 · 112동 I101</span>
+      </div>
+
       <!-- DAY 1 -->
       <div class="day-block reveal">
         <div class="day-head">
           <span class="day-tag mono">DAY 01</span>
           <span class="day-date">07.28 <em>화요일</em></span>
-          <span class="day-place mono">104동 E205 · 112동 I101</span>
         </div>
 
         <ol class="timeline">
@@ -126,22 +141,26 @@
           <li class="tl-item keynote reveal">
             <span class="tl-time mono">11:10 – 11:50</span>
             <div class="tl-body">
-              <p class="tl-title">Keynote 1</p>
-              <p class="tl-speaker"><b>강윤석</b> 교수님 · 충북대학교</p>
-              <div class="tl-meta">
-                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
-                <span class="tl-note">발표 35분 + 질의응답 5분</span>
+              <div class="kn-card">
+                <img class="kn-photo" src="photos/keynote-1.jpg" alt="강윤석 교수님" onerror="avatarFallback(this,'강')">
+                <div class="kn-info">
+                  <p class="tl-title">Keynote 1</p>
+                  <p class="tl-speaker"><b>강윤석</b> 교수님 · 충북대학교</p>
+                  <p class="kn-topic">HyperGC: Learning Hypergraph Representations via Full Hyperedge Reconstruction and Contrastive Learning</p>
+                </div>
               </div>
             </div>
           </li>
           <li class="tl-item keynote reveal">
             <span class="tl-time mono">11:50 – 12:30</span>
             <div class="tl-body">
-              <p class="tl-title">Keynote 2</p>
-              <p class="tl-speaker"><b>문희승</b> 교수님 · 중앙대학교</p>
-              <div class="tl-meta">
-                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
-                <span class="tl-note">발표 35분 + 질의응답 5분</span>
+              <div class="kn-card">
+                <img class="kn-photo" src="photos/keynote-2.jpg" alt="문희승 교수님" onerror="avatarFallback(this,'문')">
+                <div class="kn-info">
+                  <p class="tl-title">Keynote 2</p>
+                  <p class="tl-speaker"><b>문희승</b> 교수님 · 중앙대학교</p>
+                  <p class="kn-topic">Behavioral Simulation Intelligence for Human-AI Interaction</p>
+                </div>
               </div>
             </div>
           </li>
@@ -152,33 +171,36 @@
               <div class="tl-meta"><button class="place-chip chip sm" data-map="b112">112동 I101</button></div>
             </div>
           </li>
-          <li class="tl-item reveal">
+          <li class="tl-item oral reveal">
             <span class="tl-time mono">14:40 – 15:40</span>
             <div class="tl-body">
               <p class="tl-title">Oral Presentation 1</p>
-              <div class="tl-meta">
-                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
-                <span class="tl-note">학생 3명 · 각 발표 15분 + 질의응답 5분</span>
+              <div class="oral-talks">
+                <div class="talk"><span class="talk-num mono">발표 1</span><span class="talk-name">문수호</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
+                <div class="talk"><span class="talk-num mono">발표 2</span><span class="talk-name">조주희</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
+                <div class="talk"><span class="talk-num mono">발표 3</span><span class="talk-name">이규원</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
               </div>
             </div>
           </li>
-          <li class="tl-item reveal">
+          <li class="tl-item oral reveal">
             <span class="tl-time mono">15:50 – 16:50</span>
             <div class="tl-body">
               <p class="tl-title">Oral Presentation 2</p>
-              <div class="tl-meta">
-                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
-                <span class="tl-note">학생 3명 · 각 발표 15분 + 질의응답 5분</span>
+              <div class="oral-talks">
+                <div class="talk"><span class="talk-num mono">발표 1</span><span class="talk-name tbd">발표자 미정</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
+                <div class="talk"><span class="talk-num mono">발표 2</span><span class="talk-name tbd">발표자 미정</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
+                <div class="talk"><span class="talk-num mono">발표 3</span><span class="talk-name tbd">발표자 미정</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
               </div>
             </div>
           </li>
-          <li class="tl-item reveal">
+          <li class="tl-item oral reveal">
             <span class="tl-time mono">17:00 – 18:00</span>
             <div class="tl-body">
               <p class="tl-title">Oral Presentation 3</p>
-              <div class="tl-meta">
-                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
-                <span class="tl-note">학생 3명 · 각 발표 15분 + 질의응답 5분</span>
+              <div class="oral-talks">
+                <div class="talk"><span class="talk-num mono">발표 1</span><span class="talk-name tbd">발표자 미정</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
+                <div class="talk"><span class="talk-num mono">발표 2</span><span class="talk-name tbd">발표자 미정</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
+                <div class="talk"><span class="talk-num mono">발표 3</span><span class="talk-name tbd">발표자 미정</span><span class="talk-title tbd">발표 제목 추후 공개</span></div>
               </div>
             </div>
           </li>
@@ -200,7 +222,6 @@
         <div class="day-head">
           <span class="day-tag mono">DAY 02</span>
           <span class="day-date">07.29 <em>수요일</em></span>
-          <span class="day-place mono">106동 501-10</span>
         </div>
 
         <ol class="timeline">
@@ -208,10 +229,6 @@
             <span class="tl-time mono">10:00 – 12:00</span>
             <div class="tl-body">
               <p class="tl-title">워크숍 마무리 및 차년도 계획 수립</p>
-              <div class="tl-meta">
-                <button class="place-chip chip sm" data-map="b106">106동 501-10</button>
-                <span class="tl-note warn">학생 참여 X</span>
-              </div>
             </div>
           </li>
         </ol>
@@ -260,35 +277,6 @@
       </div>
     </section>
 
-    <!-- ===== 안내 ===== -->
-    <section class="section" id="info">
-      <p class="section-eyebrow mono reveal">FOR PRESENTERS</p>
-      <h2 class="section-title reveal">발표 안내</h2>
-
-      <div class="info-grid">
-        <div class="info-card reveal">
-          <p class="info-tag mono">KEYNOTE</p>
-          <p class="info-main">발표 35분 <span class="plus">+</span> 질의응답 5분</p>
-          <p class="info-sub">104동 E205 · Day 1 오전</p>
-        </div>
-        <div class="info-card reveal">
-          <p class="info-tag mono">ORAL</p>
-          <p class="info-main">발표 15분 <span class="plus">+</span> 질의응답 5분</p>
-          <p class="info-sub">세션당 학생 3명 · 104동 E205 · Day 1 오후</p>
-        </div>
-        <div class="info-card reveal">
-          <p class="info-tag mono">LIGHTNING · POSTER</p>
-          <p class="info-main">점심시간 진행</p>
-          <p class="info-sub">12:30 – 14:30 · 112동 I101</p>
-        </div>
-      </div>
-
-      <!-- 오럴 발표자 -->
-      <p class="section-eyebrow mono reveal oral-eyebrow">ORAL PRESENTATIONS</p>
-      <h3 class="oral-heading reveal">학생 오럴 발표</h3>
-      <div class="oral-list" id="oral-list"></div>
-    </section>
-
   </main>
 
   <footer class="footer">
@@ -305,7 +293,6 @@
 
   <script src="js/map-config.js"></script>
   <script src="js/gallery-data.js"></script>
-  <script src="js/oral-data.js"></script>
   <script src="js/starfield.js"></script>
   <script src="js/main.js"></script>
 </body>
