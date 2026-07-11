@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026 하계 DI × HCI 워크숍 — UNIST Data Intelligence Lab · 2026.07.28–07.29">
+  <title>2026 하계 DI × HCI 워크숍</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 인터랙티브 별하늘 / 초신성 캔버스 -->
+  <canvas id="cosmos" aria-hidden="true"></canvas>
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#top">
+      <span class="nav-star">✦</span>
+      <span class="mono">DI × HCI 2026</span>
+    </a>
+    <nav class="nav-links" aria-label="주요 섹션">
+      <a href="#about">개요</a>
+      <a href="#schedule">일정</a>
+      <a href="#venue">오시는 길</a>
+      <a href="#gallery">갤러리</a>
+      <a href="#info">발표 안내</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <p class="hero-eyebrow mono reveal">CDIL 연구실 협력 워크숍 · 2026</p>
+      <h1 class="hero-title reveal">
+        <span class="line">2026 하계</span>
+        <span class="line grad">DI × HCI 워크숍</span>
+      </h1>
+      <p class="hero-host reveal">UNIST Data Intelligence Lab</p>
+
+      <p class="hero-dates mono reveal">
+        <span>JUL 28 – JUL 29</span><span class="dot"></span><span>2026</span><span class="dot"></span><span>UNIST</span>
+      </p>
+
+      <div class="hero-places reveal">
+        <button class="chip place-chip" data-map="b104">104동 E205</button>
+        <button class="chip place-chip" data-map="b112">112동 I101</button>
+        <button class="chip place-chip" data-map="b106">106동 501-10</button>
+      </div>
+
+      <!-- D-DAY 카운트다운 -->
+      <div class="countdown reveal" id="countdown" aria-label="워크숍 시작까지 남은 시간">
+        <div class="cd-cell"><span class="cd-num mono" id="cd-d">--</span><span class="cd-label">DAYS</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-cell"><span class="cd-num mono" id="cd-h">--</span><span class="cd-label">HRS</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-cell"><span class="cd-num mono" id="cd-m">--</span><span class="cd-label">MIN</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-cell"><span class="cd-num mono" id="cd-s">--</span><span class="cd-label">SEC</span></div>
+      </div>
+      <p class="cd-status mono" id="cd-status"></p>
+
+      <a class="scroll-down" href="#about" aria-label="아래로 스크롤"><span></span></a>
+    </section>
+
+    <!-- ===== 참여 연구실 ===== -->
+    <section class="section" id="about">
+      <p class="section-eyebrow mono reveal">PARTICIPANTS</p>
+      <h2 class="section-title reveal">참여 연구실</h2>
+      <p class="section-desc reveal">네 개 대학의 연구실이 데이터 인텔리전스(DI)와 인간-컴퓨터 상호작용(HCI)을 주제로 모입니다.</p>
+
+      <div class="school-grid">
+        <div class="school-card reveal">
+          <div class="school-badge host-badge mono">HOST</div>
+          <div class="school-logo"><img src="img/unist.png" alt="UNIST 로고" loading="lazy"></div>
+          <h3 class="school-name">UNIST</h3>
+          <p class="school-full">울산과학기술원 · Data Intelligence Lab</p>
+          <ul class="prof-list"><li>이연창 교수님</li></ul>
+        </div>
+        <div class="school-card reveal">
+          <div class="school-logo"><img src="img/cau.png" alt="중앙대학교 로고" loading="lazy"></div>
+          <h3 class="school-name">중앙대학교</h3>
+          <p class="school-full">Chung-Ang University</p>
+          <ul class="prof-list"><li>고윤용 교수님</li><li>문희승 교수님</li></ul>
+        </div>
+        <div class="school-card reveal">
+          <div class="school-logo"><img src="img/cbnu.png" alt="충북대학교 로고" loading="lazy"></div>
+          <h3 class="school-name">충북대학교</h3>
+          <p class="school-full">Chungbuk National University</p>
+          <ul class="prof-list"><li>강윤석 교수님</li><li>김보관 교수님</li></ul>
+        </div>
+        <div class="school-card reveal">
+          <div class="school-logo"><img src="img/hanyang.png" alt="한양대학교 로고" loading="lazy"></div>
+          <h3 class="school-name">한양대학교</h3>
+          <p class="school-full">Hanyang University</p>
+          <ul class="prof-list"><li>한경식 교수님</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 일정 ===== -->
+    <section class="section" id="schedule">
+      <p class="section-eyebrow mono reveal">TIMELINE</p>
+      <h2 class="section-title reveal">워크숍 일정</h2>
+
+      <!-- DAY 1 -->
+      <div class="day-block reveal">
+        <div class="day-head">
+          <span class="day-tag mono">DAY 01</span>
+          <span class="day-date">07.28 <em>화요일</em></span>
+          <span class="day-place mono">104동 E205 · 112동 I101</span>
+        </div>
+
+        <ol class="timeline">
+          <li class="tl-item reveal">
+            <span class="tl-time mono">11:00 – 11:10</span>
+            <div class="tl-body">
+              <p class="tl-title">일정 안내</p>
+              <div class="tl-meta"><button class="place-chip chip sm" data-map="b104">104동 E205</button></div>
+            </div>
+          </li>
+          <li class="tl-item keynote reveal">
+            <span class="tl-time mono">11:10 – 11:50</span>
+            <div class="tl-body">
+              <p class="tl-title">Keynote 1</p>
+              <p class="tl-speaker"><b>강윤석</b> 교수님 · 충북대학교</p>
+              <div class="tl-meta">
+                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
+                <span class="tl-note">발표 35분 + 질의응답 5분</span>
+              </div>
+            </div>
+          </li>
+          <li class="tl-item keynote reveal">
+            <span class="tl-time mono">11:50 – 12:30</span>
+            <div class="tl-body">
+              <p class="tl-title">Keynote 2</p>
+              <p class="tl-speaker"><b>문희승</b> 교수님 · 중앙대학교</p>
+              <div class="tl-meta">
+                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
+                <span class="tl-note">발표 35분 + 질의응답 5분</span>
+              </div>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <span class="tl-time mono">12:30 – 14:30</span>
+            <div class="tl-body">
+              <p class="tl-title">점심 식사 및 라이트닝 토크 · 포스터 발표</p>
+              <div class="tl-meta"><button class="place-chip chip sm" data-map="b112">112동 I101</button></div>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <span class="tl-time mono">14:40 – 15:40</span>
+            <div class="tl-body">
+              <p class="tl-title">Oral Presentation 1</p>
+              <div class="tl-meta">
+                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
+                <span class="tl-note">학생 3명 · 각 발표 15분 + 질의응답 5분</span>
+              </div>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <span class="tl-time mono">15:50 – 16:50</span>
+            <div class="tl-body">
+              <p class="tl-title">Oral Presentation 2</p>
+              <div class="tl-meta">
+                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
+                <span class="tl-note">학생 3명 · 각 발표 15분 + 질의응답 5분</span>
+              </div>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <span class="tl-time mono">17:00 – 18:00</span>
+            <div class="tl-body">
+              <p class="tl-title">Oral Presentation 3</p>
+              <div class="tl-meta">
+                <button class="place-chip chip sm" data-map="b104">104동 E205</button>
+                <span class="tl-note">학생 3명 · 각 발표 15분 + 질의응답 5분</span>
+              </div>
+            </div>
+          </li>
+          <li class="tl-item dinner reveal">
+            <span class="tl-time mono">18:30</span>
+            <div class="tl-body">
+              <p class="tl-title">저녁 식사</p>
+              <div class="tl-meta">
+                <button class="place-chip chip sm" data-map="dinner">식당: 허고개 소도둑 구영점</button>
+                <a class="tl-link mono" href="https://naver.me/FXwNbhMC" target="_blank" rel="noopener noreferrer">네이버 지도 ↗</a>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="day-block reveal">
+        <div class="day-head">
+          <span class="day-tag mono">DAY 02</span>
+          <span class="day-date">07.29 <em>수요일</em></span>
+          <span class="day-place mono">106동 501-10</span>
+        </div>
+
+        <ol class="timeline">
+          <li class="tl-item reveal">
+            <span class="tl-time mono">10:00 – 12:00</span>
+            <div class="tl-body">
+              <p class="tl-title">워크숍 마무리 및 차년도 계획 수립</p>
+              <div class="tl-meta">
+                <button class="place-chip chip sm" data-map="b106">106동 501-10</button>
+                <span class="tl-note warn">학생 참여 X</span>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 오시는 길 ===== -->
+    <section class="section" id="venue">
+      <p class="section-eyebrow mono reveal">LOCATION</p>
+      <h2 class="section-title reveal">오시는 길</h2>
+
+      <div class="map-wrap reveal">
+        <div class="map-tabs" role="tablist" aria-label="장소 선택">
+          <button class="map-tab active" role="tab" data-map="b104" aria-selected="true">104동 <span class="room mono">E205</span></button>
+          <button class="map-tab" role="tab" data-map="b112" aria-selected="false">112동 <span class="room mono">I101</span></button>
+          <button class="map-tab" role="tab" data-map="b106" aria-selected="false">106동 <span class="room mono">501-10</span></button>
+          <button class="map-tab" role="tab" data-map="dinner" aria-selected="false">저녁 식사 <span class="room mono">7.28</span></button>
+        </div>
+
+        <div class="map-info">
+          <p class="map-title" id="map-title">UNIST 104동 <span class="room-badge mono">E205호</span></p>
+          <p class="map-desc" id="map-desc">Day 1 — 일정 안내 · Keynote · Oral Presentation</p>
+        </div>
+
+        <div class="map-frame">
+          <div id="naver-map" hidden aria-label="네이버 지도"></div>
+          <iframe id="map-iframe" title="지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+
+        <div class="map-links">
+          <a class="tl-link mono" id="map-open" href="#" target="_blank" rel="noopener noreferrer">구글 지도에서 크게 보기 ↗</a>
+          <a class="tl-link mono" id="map-naver" href="https://naver.me/FXwNbhMC" target="_blank" rel="noopener noreferrer" hidden>네이버 지도 ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 갤러리 ===== -->
+    <section class="section" id="gallery">
+      <p class="section-eyebrow mono reveal">GALLERY</p>
+      <h2 class="section-title reveal">갤러리</h2>
+
+      <div class="gallery-grid" id="gallery-grid"></div>
+      <div class="gallery-empty reveal" id="gallery-empty" hidden>
+        <span class="ge-star">✦</span>
+        <p>아직 등록된 사진이 없습니다.</p>
+        <p class="mono sm">photos/ 폴더에 사진을 넣고 js/gallery-data.js에 파일명을 추가하세요.</p>
+      </div>
+    </section>
+
+    <!-- ===== 안내 ===== -->
+    <section class="section" id="info">
+      <p class="section-eyebrow mono reveal">FOR PRESENTERS</p>
+      <h2 class="section-title reveal">발표 안내</h2>
+
+      <div class="info-grid">
+        <div class="info-card reveal">
+          <p class="info-tag mono">KEYNOTE</p>
+          <p class="info-main">발표 35분 <span class="plus">+</span> 질의응답 5분</p>
+          <p class="info-sub">104동 E205 · Day 1 오전</p>
+        </div>
+        <div class="info-card reveal">
+          <p class="info-tag mono">ORAL</p>
+          <p class="info-main">발표 15분 <span class="plus">+</span> 질의응답 5분</p>
+          <p class="info-sub">세션당 학생 3명 · 104동 E205 · Day 1 오후</p>
+        </div>
+        <div class="info-card reveal">
+          <p class="info-tag mono">LIGHTNING · POSTER</p>
+          <p class="info-main">점심시간 진행</p>
+          <p class="info-sub">12:30 – 14:30 · 112동 I101</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer-brand">CAU MINDS Lab</p>
+    <p class="mono sm">Summer Workshop · 2026.07.28 – 07.29</p>
+  </footer>
+
+  <!-- 라이트박스 -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="사진 크게 보기" hidden>
+    <button class="lb-close" id="lb-close" aria-label="닫기">×</button>
+    <img id="lb-img" src="" alt="">
+    <p class="lb-caption mono" id="lb-caption"></p>
+  </div>
+
+  <script src="js/map-config.js"></script>
+  <script src="js/gallery-data.js"></script>
+  <script src="js/starfield.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
