@@ -205,18 +205,18 @@
     // stars
     for (const st of stars) {
       // parallax: near layers move more (reduced-motion이면 정지)
-      const px = reduceMotion ? 0 : parX * st.layer * 18;
-      const py = reduceMotion ? 0 : parY * st.layer * 12;
+      const px = reduceMotion ? 0 : parX * st.layer * 20;
+      const py = reduceMotion ? 0 : parY * st.layer * 14;
 
       // mouse repulsion (near stars only)
       if (!reduceMotion && !isMobile) {
         const dx = st.x + px - mouse.x;
         const dy = st.y + py - mouse.y;
         const dist2 = dx * dx + dy * dy;
-        const R = 110;
+        const R = 120;
         if (dist2 < R * R && dist2 > 0.01) {
           const dist = Math.sqrt(dist2);
-          const f = ((R - dist) / R) * 14 * st.layer;
+          const f = ((R - dist) / R) * 16 * st.layer;
           st.ox += (dx / dist) * f * 0.12;
           st.oy += (dy / dist) * f * 0.12;
         }
