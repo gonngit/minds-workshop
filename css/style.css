@@ -344,6 +344,32 @@ main, .footer { position: relative; z-index: 2; }
 .tl-speaker b { color: var(--text); }
 
 .tl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; margin-top: 0.55rem; }
+
+/* 시간 아래에 위치 표기 (저녁 · 마무리) — 시간 폭 기준 중앙정렬 */
+.tl-time-col {
+  flex: 0 0 6.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 0.35rem;
+}
+.tl-time-col .tl-time { flex: none; padding-top: 0; text-align: center; }
+.tl-sublabel {
+  display: block;
+  margin-top: 0.4rem;
+  background: none; border: none; padding: 0;
+  font-family: var(--font-mono); font-size: 0.68rem;
+  color: var(--faint);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.tl-sublabel:hover { color: var(--star-cyan); }
+
+/* 제목 옆에 링크 (저녁 식사 — 네이버 지도) */
+.tl-titlerow { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
 .tl-note { color: var(--faint); font-size: 0.75rem; }
 .tl-note.warn { color: var(--nova-3); }
 .tl-link { color: var(--star-cyan); font-size: 0.75rem; text-decoration: none; border-bottom: 1px dotted rgba(127, 227, 255, 0.4); }
@@ -588,6 +614,8 @@ main, .footer { position: relative; z-index: 2; }
   border: none;
 }
 .kn-info { min-width: 0; }
+.kn-lab { color: var(--faint); text-decoration: none; transition: color 0.25s; }
+.kn-lab:hover { color: var(--star-violet); }
 .kn-topic {
   margin-top: 0.5rem;
   font-size: 0.9rem;
@@ -596,7 +624,7 @@ main, .footer { position: relative; z-index: 2; }
   color: var(--text);
 }
 
-/* ---------- 오럴 발표 (일정 내, 콤팩트 한 줄 · 이름+제목 나란히) ---------- */
+/* ---------- 오럴 발표 (일정 내 · 이름+랩 위, 제목 아래) ---------- */
 .oral-talks {
   margin-top: 0.6rem;
   display: flex;
@@ -606,9 +634,9 @@ main, .footer { position: relative; z-index: 2; }
 .talk {
   position: relative;
   display: flex;
-  align-items: baseline;
-  gap: 0.7rem;
-  padding: 0.5rem 0.85rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.6rem 0.9rem;
   border-radius: 10px;
   background: var(--surface);
   overflow: hidden;
@@ -627,10 +655,11 @@ main, .footer { position: relative; z-index: 2; }
   pointer-events: none;
   opacity: 0.5;
 }
-.talk-num { flex: 0 0 auto; font-size: 0.6rem; letter-spacing: 0.18em; color: var(--star-cyan); }
-.talk-name { flex: 0 0 auto; font-size: 0.9rem; font-weight: 700; }
+.talk-head { display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; }
+.talk-name { font-size: 0.92rem; font-weight: 700; }
 .talk-name.tbd { color: var(--faint); font-weight: 500; }
-.talk-title { flex: 1 1 auto; font-size: 0.82rem; color: var(--muted); min-width: 0; }
+.talk-lab { font-size: 0.72rem; color: var(--star-violet); }
+.talk-title { font-size: 0.82rem; color: var(--muted); }
 .talk-title.tbd { color: var(--faint); }
 
 @media (max-width: 640px) {
@@ -659,6 +688,11 @@ main, .footer { position: relative; z-index: 2; }
   .tl-item::before { left: 0; top: 1.35rem; }
   .tl-time { flex: none; text-align: left; padding-top: 0; }
   .tl-body { padding-left: 0; }
+
+  /* 모바일: 시간+위치 한 줄 왼쪽 정렬 */
+  .tl-time-col { flex-direction: row; align-items: baseline; gap: 0.5rem; padding-top: 0; text-align: left; }
+  .tl-time-col .tl-time { text-align: left; }
+  .tl-sublabel { margin-top: 0; text-align: left; }
 
   .day-place { margin-left: 0; flex-basis: 100%; }
   .map-frame { aspect-ratio: 4 / 5; }
