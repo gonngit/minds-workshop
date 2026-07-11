@@ -340,7 +340,7 @@ main, .footer { position: relative; z-index: 2; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
 }
-.tl-speaker { color: var(--muted); font-size: 0.88rem; margin-top: 0.15rem; }
+.tl-speaker { color: var(--text); font-size: 0.88rem; margin-top: 0.15rem; }
 .tl-speaker b { color: var(--text); }
 
 .tl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; margin-top: 0.55rem; }
@@ -614,8 +614,10 @@ main, .footer { position: relative; z-index: 2; }
   border: none;
 }
 .kn-info { min-width: 0; }
-.kn-lab { color: var(--faint); text-decoration: none; transition: color 0.25s; }
+.kn-lab { color: var(--text); text-decoration: none; transition: color 0.25s; white-space: nowrap; }
 .kn-lab:hover { color: var(--star-violet); }
+/* 작은 텍스트 화살표 (이모지 렌더 방지 — mono 폰트 강제) */
+.ext-arrow { font-size: 0.82em; font-variant-emoji: text; }
 .kn-topic {
   margin-top: 0.5rem;
   font-size: 0.9rem;
