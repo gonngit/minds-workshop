@@ -722,8 +722,8 @@ main, .footer { position: relative; z-index: 2; }
   .sched-legend { grid-template-columns: 1fr; gap: 0.4rem; }
   .leg-item, .leg-item:nth-child(1), .leg-item:nth-child(2), .leg-item:nth-child(3) { justify-self: start; }
 
-  /* 모바일: 시간+위치 한 줄 왼쪽 정렬 */
-  .tl-time-col { flex-direction: row; align-items: baseline; gap: 0.5rem; padding-top: 0; text-align: left; }
+  /* 모바일: 시간+위치 한 줄 왼쪽 정렬 (column 레이아웃에서 6.8rem이 높이로 잡히던 큰 틈 제거) */
+  .tl-time-col { flex: none; flex-direction: row; align-items: baseline; gap: 0.5rem; padding-top: 0; text-align: left; }
   .tl-time-col .tl-time { text-align: left; }
   .tl-sublabel { margin-top: 0; text-align: left; }
 
