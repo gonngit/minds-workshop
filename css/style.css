@@ -527,6 +527,117 @@ main, .footer { position: relative; z-index: 2; }
 .info-main .plus { color: var(--nova-2); }
 .info-sub { margin-top: 0.4rem; color: var(--faint); font-size: 0.8rem; }
 
+/* ---------- 오럴 발표자 ---------- */
+.oral-eyebrow { margin-top: 3.4rem; }
+.oral-heading {
+  margin-top: 0.5rem;
+  font-family: var(--font-disp);
+  font-size: clamp(1.3rem, 3.2vw, 1.7rem);
+  font-weight: 700;
+}
+
+.oral-list {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* 카드: 한 줄에 하나씩, 가장자리에 주황-레드 그라데이션 테두리 */
+.oral-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.3rem 1.5rem;
+  border-radius: 18px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+}
+/* 그라데이션 테두리 (마스크 트릭 — 안쪽은 비우고 테두리만 그라데이션) */
+.oral-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: var(--grad-nova);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+.oral-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 28px rgba(255, 138, 76, 0.18);
+}
+
+.oral-photo {
+  flex: 0 0 auto;
+  width: 96px; height: 96px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+}
+.oral-photo.placeholder {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-disp);
+  font-size: 1.9rem; font-weight: 700;
+  color: #14060a;
+  background: var(--grad-nova);
+  border: none;
+}
+
+.oral-body { flex: 1 1 auto; min-width: 0; }
+.oral-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; letter-spacing: 0.22em;
+  color: var(--star-cyan);
+}
+.oral-name { font-size: 1.15rem; font-weight: 700; margin-top: 0.15rem; }
+.oral-affil { color: var(--faint); font-size: 0.82rem; margin-top: 0.1rem; }
+.oral-title {
+  margin-top: 0.7rem;
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text);
+}
+.oral-title.tbd { color: var(--faint); font-weight: 500; font-style: normal; }
+.oral-summary { margin-top: 0.25rem; color: var(--muted); font-size: 0.86rem; }
+
+.oral-action { flex: 0 0 auto; }
+.oral-pdf {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.78rem;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.25s;
+}
+.oral-pdf.ready {
+  color: #14060a;
+  background: var(--grad-nova);
+  background-size: 130% 130%;
+  background-position: center;
+  box-shadow: 0 0 16px rgba(255, 138, 76, 0.3);
+}
+.oral-pdf.ready:hover { box-shadow: 0 0 24px rgba(255, 138, 76, 0.5); transform: translateY(-1px); }
+.oral-pdf.disabled {
+  color: var(--faint);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: default;
+}
+
+@media (max-width: 640px) {
+  .oral-card { flex-wrap: wrap; gap: 1rem; padding: 1.2rem; }
+  .oral-photo { width: 72px; height: 72px; }
+  .oral-action { flex-basis: 100%; }
+  .oral-pdf { width: 100%; justify-content: center; }
+}
+
 /* ---------- 푸터 ---------- */
 .footer {
   margin-top: clamp(5rem, 10vw, 8rem);

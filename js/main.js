@@ -248,6 +248,77 @@
     }
   }
 
+  /* ---------- 오럴 발표자 ---------- */
+  const oralList = document.getElementById("oral-list");
+  const orals = (typeof ORAL !== "undefined" && Array.isArray(ORAL)) ? ORAL : [];
+
+  function initial(name) {
+    const s = (name || "").trim();
+    return s ? s.charAt(0) : "✦";
+  }
+
+  if (oralList) {
+    orals.forEach((p, i) => {
+      const card = document.createElement("article");
+      card.className = "oral-card reveal";
+
+      // 사진 (없으면 이니셜 플레이스홀더)
+      if (p.photo) {
+        const img = document.createElement("img");
+        img.className = "oral-photo";
+        img.src = p.photo;
+        img.alt = (p.name || "발표자") + " 사진";
+        img.loading = "lazy";
+        card.appendChild(img);
+      } else {
+        const ph = document.createElement("div");
+        ph.className = "oral-photo placeholder";
+        ph.textContent = initial(p.name);
+        ph.setAttribute("aria-hidden", "true");
+        card.appendChild(ph);
+      }
+
+      // 본문
+      const body = document.createElement("div");
+      body.className = "oral-body";
+      body.innerHTML =
+        '<p class="oral-num mono">ORAL ' + (i + 1) + '</p>' +
+        '<p class="oral-name"></p>' +
+        '<p class="oral-affil"></p>' +
+        (p.title
+          ? '<p class="oral-title"></p>'
+          : '<p class="oral-title tbd">발표 제목 추후 공개</p>') +
+        (p.summary ? '<p class="oral-summary"></p>' : "");
+      body.querySelector(".oral-name").textContent = p.name || ("발표자 " + (i + 1));
+      body.querySelector(".oral-affil").textContent = p.affil || "";
+      if (p.title) body.querySelector(".oral-title").textContent = p.title;
+      if (p.summary) body.querySelector(".oral-summary").textContent = p.summary;
+      card.appendChild(body);
+
+      // 발표자료 버튼
+      const action = document.createElement("div");
+      action.className = "oral-action";
+      if (p.pdf) {
+        const a = document.createElement("a");
+        a.className = "oral-pdf ready";
+        a.href = p.pdf;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = "발표자료 (PDF) ↗";
+        action.appendChild(a);
+      } else {
+        const span = document.createElement("span");
+        span.className = "oral-pdf disabled";
+        span.textContent = "발표자료 준비 중";
+        action.appendChild(span);
+      }
+      card.appendChild(action);
+
+      oralList.appendChild(card);
+      io.observe(card); // 동적 생성 카드도 스크롤 리빌 대상에 등록
+    });
+  }
+
   /* ---------- 라이트박스 ---------- */
   const lightbox = document.getElementById("lightbox");
   const lbImg = document.getElementById("lb-img");
