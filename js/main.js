@@ -293,4 +293,16 @@
       card.style.setProperty("--my", (e.clientY - r.top) + "px");
     });
   });
+
+  // 키노트 카드: 커서가 카드 밖·근처에 있어도 테두리가 반응하도록 전역 추적
+  const knCards = document.querySelectorAll(".kn-card");
+  if (knCards.length) {
+    window.addEventListener("pointermove", (e) => {
+      knCards.forEach(card => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        card.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
+    }, { passive: true });
+  }
 })();
