@@ -11,7 +11,7 @@ const ORAL = [
   {
     name: "문수호",
     affil: "중앙대학교 MINDS Lab",
-    photo: "",        // "photos/oral-1.jpg"
+    photo: "photos/oral-1.jpg",
     title: "",        // "발표 제목"
     summary: "",      // "한 줄 설명"
     pdf: ""           // "pdfs/oral-1.pdf"
@@ -19,7 +19,7 @@ const ORAL = [
   {
     name: "조주희",
     affil: "중앙대학교 MINDS Lab",
-    photo: "",        // "photos/oral-2.jpg"
+    photo: "photos/oral-2.jpg",
     title: "",
     summary: "",
     pdf: ""
@@ -27,7 +27,7 @@ const ORAL = [
   {
     name: "이규원",
     affil: "중앙대학교 MINDS Lab",
-    photo: "",        // "photos/oral-3.jpg"
+    photo: "photos/oral-3.jpg",
     title: "",
     summary: "",
     pdf: ""

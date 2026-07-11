@@ -262,19 +262,22 @@
       const card = document.createElement("article");
       card.className = "oral-card reveal";
 
-      // 사진 (없으면 이니셜 플레이스홀더)
+      // 이니셜 플레이스홀더 (사진 없거나 로드 실패 시 표시)
+      const ph = document.createElement("div");
+      ph.className = "oral-photo placeholder";
+      ph.textContent = initial(p.name);
+      ph.setAttribute("aria-hidden", "true");
+
+      // 사진 (파일 있으면 표시, 없거나 404면 플레이스홀더 유지)
       if (p.photo) {
         const img = document.createElement("img");
         img.className = "oral-photo";
         img.src = p.photo;
         img.alt = (p.name || "발표자") + " 사진";
         img.loading = "lazy";
+        img.onerror = () => { img.replaceWith(ph); };
         card.appendChild(img);
       } else {
-        const ph = document.createElement("div");
-        ph.className = "oral-photo placeholder";
-        ph.textContent = initial(p.name);
-        ph.setAttribute("aria-hidden", "true");
         card.appendChild(ph);
       }
 
