@@ -289,6 +289,17 @@ main, .footer { position: relative; z-index: 2; }
 .prof-list { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
 .prof-list li { color: var(--muted); font-size: 0.9rem; }
 .prof-list li::before { content: "✦ "; color: var(--nova-2); font-size: 0.7em; }
+/* 교수님 이름 옆 랩 링크 (은은한 회색 → 호버 보라) */
+.prof-lab {
+  margin-left: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--faint);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+a.prof-lab:hover { color: var(--star-violet); }
 
 /* ---------- 타임라인 ---------- */
 .day-block { margin-top: 3rem; }
