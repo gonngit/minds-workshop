@@ -629,7 +629,8 @@ main, .footer { position: relative; z-index: 2; }
   width: 76px; height: 76px;
   border-radius: 14px;
   object-fit: cover;
-  background: var(--bg-soft);
+  object-position: center 22%; /* 얼굴이 위로 잘리지 않게 살짝 아래로 */
+  background: #fff;            /* 빈 공간은 흰색 */
   border: 1px solid var(--border);
 }
 .kn-photo.placeholder {
